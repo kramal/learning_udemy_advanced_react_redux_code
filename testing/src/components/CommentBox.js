@@ -16,6 +16,13 @@ class CommentBox extends Component {
     this.setState({ comment: '' });
   };
 
+  fetchComments = event => {
+    event.preventDefault();
+
+    this.props.fetchComments();
+    this.setState({ comment: '' });
+  };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -23,6 +30,7 @@ class CommentBox extends Component {
         <textarea onChange={this.handleChange} value={this.state.comment} />
         <div>
           <button>Submit Comment</button>
+          <button onClick={this.fetchComments}>Fetch Comments</button>
         </div>
       </form>
     );

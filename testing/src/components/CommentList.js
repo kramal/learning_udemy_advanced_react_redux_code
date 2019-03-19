@@ -3,21 +3,18 @@ import { connect } from 'react-redux';
 import * as actions from 'actions';
 
 class CommentList extends Component {
+  renderComments() {
+    return this.props.comments.map(comment => {
+      return <li key={comment}>{comment}</li>;
+    });
+  }
+
   render() {
-    let { comments } = this.props;
-    console.log(comments.length);
-
-    if (comments.length > 0) {
-      let comments_list = [];
-
-      for (let i = 0; i < comments.length; i++) {
-        comments_list.push(<li>{comments[i]}</li>);
-      }
-
-      return <ul>{comments_list}</ul>;
-    }
-
-    return <span>No Data</span>;
+    return (
+      <div>
+        <ul>{this.renderComments()}</ul>
+      </div>
+    );
   }
 }
 
